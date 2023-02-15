@@ -3,6 +3,10 @@
 
 #define DUST_SPEED_PERIOD 10000
 
+#define MOTOR_ANGLE_140     140
+#define MOTOR_ANGLE_90      90
+#define MOTOR_ANGLE_10      10
+
 typedef enum{
     SPEED_LOW = 0,
     SPEED_MEDIUM,

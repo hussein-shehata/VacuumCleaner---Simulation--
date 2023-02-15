@@ -4,19 +4,21 @@
 
 #define SOFT_SWITCHING_TICK_COUNTER             4
 #define HARMONIC_REDUCTION_TICK_COUNTER         2
+#define START_TARGET_ANGLE                      90
 
 
 tMotorAngle Current_Angle = 170;
 tMotorAngle Target_Angle = 90;
 Motor_State Current_State;
+Harmonic_Reduction_State Previous_Harmonic_State;
 
 tTickCounter Current_Tick_Counter = 0;
 
 
-void Motor_init(tMotorSpeed StartSpeed, tByte MotorPin)
+void Motor_init(tMotorAngle StartAngle, tByte MotorPin)
 {
-    Current_Angle = StartSpeed;
-    Target_Angle = 90;
+    Current_Angle = StartAngle;
+    Target_Angle = START_TARGET_ANGLE;
 
 }
 
@@ -35,6 +37,8 @@ void Motor_Update()
 
     if ((Current_State == Soft_Switching) && (Current_Tick_Counter == SOFT_SWITCHING_TICK_COUNTER))
     {
+        Previous_Harmonic_State = Constant;
+
         if (Target_Angle > Current_Angle)
         {
             Current_Angle = Current_Angle + 1;
@@ -48,18 +52,28 @@ void Motor_Update()
 
     else if ((Current_State == Harmonic_Reduction) && (Current_Tick_Counter == HARMONIC_REDUCTION_TICK_COUNTER))
     {
-        if (Target_Angle == Current_Angle + 5) //then we have increased the Angle by 5 degrees in previous update 
-        {
-            Current_Angle = Current_Angle -10; // so we will decrease the angle by 10 degrees to make it below the target angle by 5 degrees
-        }
-        else if (Target_Angle == Current_Angle) // then it is the first update after the soft switching
+        if (Previous_Harmonic_State == Constant) // then it is the first update after the soft switching
         {
             Current_Angle = Current_Angle + 5; // we will start oscilliting around the target angle by increasing it by 5 degrees
+            Previous_Harmonic_State = Added_5Degrees;
+            Target_Angle = Current_Angle;     // So we can enter the harmonic_Reduction state again
         }
-        else 
+        else if (Previous_Harmonic_State == Added_5Degrees)  // then we had increased the current angle to make it above the target angle by 5 degress
         {
-            Current_Angle = Current_Angle +10 ; // then we had decreased the current angle to make it below the target angle by 5 degress
-                                                // so we will increase the current angle by 10 to make it above the target angle by 5 degrees
+            Current_Angle = Current_Angle - 10;  // so we will decrease the angle by 10 degrees to make it below the target angle by 5 degrees
+            Previous_Harmonic_State = Subtracted_5Degrees;
+            Target_Angle = Current_Angle;     // So we can enter the harmonic_Reduction state again
+        }
+        else if(Previous_Harmonic_State == Subtracted_5Degrees)// then we had decreased the current angle to make it below the target angle by 5 degress
+        {
+            Current_Angle = Current_Angle +10 ; // so we will increase the current angle by 10 to make it above the target angle by 5 degrees
+            Previous_Harmonic_State = Added_5Degrees;     
+            Target_Angle = Current_Angle;     // So we can enter the harmonic_Reduction state again                      
+        }
+
+        else
+        {
+            // do nothing
         }
     }
 
@@ -67,7 +81,7 @@ void Motor_Update()
 
 }
 
-void Motor_SetSpeed(tMotorAngle Angle)
+void Motor_SetAngle(tMotorAngle Angle)
 {
     Target_Angle = Angle;
 }
