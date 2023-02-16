@@ -22,7 +22,7 @@ typedef enum
 }Harmonic_Reduction_State;
 
 
-void Motor_init(tMotorSpeed StartSpeed, tByte MotorPin);
+void Motor_Init(tMotorSpeed StartSpeed, tByte MotorPin);
 void Motor_Update();
 void Motor_SetAngle(tMotorAngle Angle);
 

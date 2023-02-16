@@ -18,12 +18,16 @@ int main(void)
     SW_Init();
     DISP_Init();
     VC_Init();
-    Motor_Init();
+    //Motor_Init();
 
     //Initialize the timer and start it
     TMR_Init();
     TMR_Start();
-
+		
+		TMR2_Init();
+		TMR2_SetCounter(90);
+		TMR2_Start();
+	
     while (1)
     {
       // Sleep
