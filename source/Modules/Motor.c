@@ -1,5 +1,5 @@
 #include "Motor.h"
-
+#include "Timer.h"
 
 
 #define SOFT_SWITCHING_TICK_COUNTER             4
@@ -25,6 +25,7 @@ void Motor_Init(tMotorAngle StartAngle, tByte MotorPin)
 void Motor_Update()
 { 
     //TIM2_Start(Current_Angle);
+    TMR2_SetCounter(Current_Angle);
     /*Writing the algorithm to determine if we are going to Soft switching state of harmonic reduction state */
     if (Current_Angle != Target_Angle)
     {

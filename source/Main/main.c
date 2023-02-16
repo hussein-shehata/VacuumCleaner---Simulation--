@@ -8,7 +8,8 @@
 #include "stdio.h"
 
 ///Oscilloscope should monitor C6 and C7 channels
-
+#define START_TARGET_ANGLE                      90
+#define MOTOR_PIN                               6
 int main(void)
 {
     /* Initialization */
@@ -18,7 +19,7 @@ int main(void)
     SW_Init();
     DISP_Init();
     VC_Init();
-    //Motor_Init();
+    Motor_Init(START_TARGET_ANGLE, MOTOR_PIN);
 
     //Initialize the timer and start it
     TMR_Init();
