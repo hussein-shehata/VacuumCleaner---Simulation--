@@ -29,6 +29,7 @@ void Motor_Update()
     // TMR5_Start();
     //TIM2_Start(Current_Angle);
     TMR2_SetCounter(Current_Angle);
+    TMR2_Start();
     /*Writing the algorithm to determine if we are going to Soft switching state of harmonic reduction state */
     if (Current_Angle != Target_Angle)
     {
