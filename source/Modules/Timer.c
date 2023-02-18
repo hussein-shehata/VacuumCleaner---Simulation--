@@ -7,10 +7,12 @@
 
 
 LL_TIM_InitTypeDef TIM2_Config = {0, LL_TIM_COUNTERMODE_UP, 0, LL_TIM_CLOCKDIVISION_DIV1, 0};
+LL_TIM_InitTypeDef TIM5_Config = {0, LL_TIM_COUNTERMODE_UP, 0, LL_TIM_CLOCKDIVISION_DIV1, 0};
 
 // For debugging only (For logic analyzer)
 volatile uint32_t tick = 0;
 volatile uint32_t fire = 0;
+tTickCounter Current_Tick_Counter = 0;
 
 void TMR_Init(void)
 {
@@ -65,7 +67,7 @@ void SysTick_Handler(void)
 {
    // For debugging only (For logic analyzer)
    tick ^= 1;
-   
+   Current_Tick_Counter++;
    // Do nothing
    // It is made only to wake the cpu up
 }
@@ -75,4 +77,31 @@ void TIM2_IRQHandler(void)
 	//tick ^= 1;
 	fire ^= 1;
 	TIM2->SR &= ~(1<<0);
+}
+
+void TMR5_Init()
+{
+		RCC->APB1ENR |= (1<<3);
+	  NVIC_EnableIRQ(TIM5_IRQn);
+		LL_TIM_Init(TIM5, &TIM5_Config);
+	  TIM5->DIER |= (1<<0);
+}
+
+void TMR5_SetCounter(uint8_t wcet)
+{
+	LL_TIM_SetAutoReload(TIM5, wcet);
+	TIM5->CNT = 0;
+	
+}
+void TMR5_Start(void)
+{
+	// angle logic first
+	LL_TIM_EnableCounter(TIM5);
+	
+}
+
+void TMR5_Stop()
+{
+	LL_TIM_DisableCounter(TIM5);
+	
 }

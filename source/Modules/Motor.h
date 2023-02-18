@@ -1,6 +1,5 @@
 typedef unsigned char tMotorSpeed;
 typedef unsigned char tMotorAngle;
-typedef unsigned char tTickCounter;
 
 
 /* Standard data types */
