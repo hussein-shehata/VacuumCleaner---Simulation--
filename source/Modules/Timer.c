@@ -79,7 +79,7 @@ void SysTick_Handler(void)
 	TMR5_SetCounter(10);
     TMR5_Start();
 	VC_Update();
-	while(!(TIM5->SR&(1<<0))>>0);
+	while(!(((TIM5->SR)&(1<<0))>>0));
     TIM5->SR &= ~(1<<0);
     TMR5_Stop();
 
@@ -88,14 +88,14 @@ void SysTick_Handler(void)
 	TMR5_SetCounter(10);
     TMR5_Start();
   	Motor_Update();
-	while(!(TIM5->SR&(1<<0))>>0);
+	while(!(((TIM5->SR)&(1<<0))>>0));
     TIM5->SR &= ~(1<<0);
     TMR5_Stop();
 
 	TMR5_SetCounter(10);
     TMR5_Start();;
   	DISP_Update();
-	while(!(TIM5->SR&(1<<0))>>0);
+	while(!(((TIM5->SR)&(1<<0))>>0));
     TIM5->SR &= ~(1<<0);
     TMR5_Stop();
 
