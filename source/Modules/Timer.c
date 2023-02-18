@@ -70,6 +70,33 @@ void SysTick_Handler(void)
    Current_Tick_Counter++;
    // Do nothing
    // It is made only to wake the cpu up
+
+   //Tasks required 
+   	SW_Update();
+	/* sandwiching VC_Update*/
+	TMR5_SetCounter(10);
+    TMR5_Start()
+	VC_Update();
+	while(!(TIM5->SR&(1<<0))>>0);
+    TIM5->SR &= ~(1<<0);
+    TMR5_Stop();
+
+
+	/* sandwiching Motor_Update*/
+	TMR5_SetCounter(10);
+    TMR5_Start()
+  	Motor_Update();
+	while(!(TIM5->SR&(1<<0))>>0);
+    TIM5->SR &= ~(1<<0);
+    TMR5_Stop();
+
+	TMR5_SetCounter(10);
+    TMR5_Start()
+  	Disp_Update();
+	while(!(TIM5->SR&(1<<0))>>0);
+    TIM5->SR &= ~(1<<0);
+    TMR5_Stop();
+
 }
 
 void TIM2_IRQHandler(void)

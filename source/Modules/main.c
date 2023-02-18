@@ -26,8 +26,8 @@ int main(void)
     TMR_Start();
 		
 		TMR2_Init();
-		TMR2_SetCounter(90);
-		TMR2_Start();
+		// TMR2_SetCounter(90);
+		// TMR2_Start();
 	
 		TMR5_Init();
 		
