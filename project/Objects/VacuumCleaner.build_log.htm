@@ -3,92 +3,31 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.37.0.0
+IDE-Version: µVision V5.38.0.0
 Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Mohammad Wael, Cairo University, LIC=----
+License Information: Hussein Shehata, Formula, LIC=----
  
 Tool Versions:
-Toolchain:       MDK-Lite  Version: 5.37.0.0
-Toolchain Path:  E:\Keil V5\ARM\ARMCLANG\Bin
-C Compiler:      ArmClang.exe V6.18
-Assembler:       Armasm.exe V6.18
-Linker/Locator:  ArmLink.exe V6.18
-Library Manager: ArmAr.exe V6.18
-Hex Converter:   FromElf.exe V6.18
-CPU DLL:         SARMCM3.DLL V5.37.0.0
+Toolchain:       MDK-Lite  Version: 5.38.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.19
+Assembler:       Armasm.exe V6.19
+Linker/Locator:  ArmLink.exe V6.19
+Library Manager: ArmAr.exe V6.19
+Hex Converter:   FromElf.exe V6.19
+CPU DLL:         SARMCM3.DLL V5.38.0.0
 Dialog DLL:      DCM.DLL V1.17.5.0
-Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
-Dialog DLL:      TCM.DLL V1.56.1.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.1.0.0
+Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
-E:\GitHub_Repos\VacuumCleaner---Simulation--\project\VacuumCleaner.uvprojx
-Project File Date:  02/16/2023
+D:\Courses\Swift ACT\Embedded SW Design\Labs\VacuumCleaner - Simulation - Incomplete\project\VacuumCleaner.uvprojx
+Project File Date:  02/18/2023
 
 <h2>Output:</h2>
-*** Using Compiler 'V6.18', folder: 'E:\Keil V5\ARM\ARMCLANG\Bin'
-Rebuild target 'STM32F411'
-compiling Led.c...
-assembling startup_stm32f411xe.s...
-compiling system_stm32f4xx.c...
-compiling stm32f4xx_ll_rcc.c...
-compiling stm32f4xx_ll_gpio.c...
-../source/Main/main.c(7): warning: In file included from...
-../source/Main/../Modules/Motor.h(7): warning: redefinition of typedef 'tByte' is a C11 feature [-Wtypedef-redefinition]
-typedef unsigned char tByte;
-                      ^
-../source/Main/../Modules/../Main/main.h(111): note: previous definition is here
-typedef unsigned char tByte;
-                      ^
-../source/Main/main.c(7): warning: In file included from...
-../source/Main/../Modules/Motor.h(8): warning: redefinition of typedef 'tWord' is a C11 feature [-Wtypedef-redefinition]
-typedef unsigned int tWord;
-                     ^
-../source/Main/../Modules/../Main/main.h(112): note: previous definition is here
-typedef unsigned int tWord;
-                     ^
-../source/Main/main.c(7): warning: In file included from...
-../source/Main/../Modules/Motor.h(9): warning: redefinition of typedef 'tDWORD' is a C11 feature [-Wtypedef-redefinition]
-typedef unsigned long int tDWORD;
-                          ^
-../source/Main/../Modules/../Main/main.h(113): note: previous definition is here
-typedef unsigned long int tDWORD;
-                          ^
-3 warnings generated.
-compiling main.c...
-compiling SW.c...
-compiling Display.c...
-compiling Timer.c...
-compiling stm32f4xx_ll_usart.c...
-compiling stm32f4xx_ll_tim.c...
-compiling Motor.c...
-compiling retarget_io.c...
-compiling Uart.c...
-../source/Modules/VC.c(4): warning: In file included from...
-../source/Modules/../Modules/Motor.h(7): warning: redefinition of typedef 'tByte' is a C11 feature [-Wtypedef-redefinition]
-typedef unsigned char tByte;
-                      ^
-../source/Modules/../Main/main.h(111): note: previous definition is here
-typedef unsigned char tByte;
-                      ^
-../source/Modules/VC.c(4): warning: In file included from...
-../source/Modules/../Modules/Motor.h(8): warning: redefinition of typedef 'tWord' is a C11 feature [-Wtypedef-redefinition]
-typedef unsigned int tWord;
-                     ^
-../source/Modules/../Main/main.h(112): note: previous definition is here
-typedef unsigned int tWord;
-                     ^
-../source/Modules/VC.c(4): warning: In file included from...
-../source/Modules/../Modules/Motor.h(9): warning: redefinition of typedef 'tDWORD' is a C11 feature [-Wtypedef-redefinition]
-typedef unsigned long int tDWORD;
-                          ^
-../source/Modules/../Main/main.h(113): note: previous definition is here
-typedef unsigned long int tDWORD;
-                          ^
-3 warnings generated.
-compiling VC.c...
-linking...
-Program Size: Code=13760 RO-data=1096 RW-data=12 ZI-data=1944  
-".\Objects\VacuumCleaner.axf" - 0 Error(s), 6 Warning(s).
+*** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'STM32F411'
+".\Objects\VacuumCleaner.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -107,7 +46,7 @@ Package Vendor: Keil
 
 <h2>Collection of Component include folders:</h2>
   ./RTE/_STM32F411
-  C:/Users/Mohamed/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.15.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+  C:/Users/Scorpio/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.15.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
 
 <h2>Collection of Component Files used:</h2>
 
@@ -119,7 +58,7 @@ Package Vendor: Keil
 
    * Component: Keil.ARM Compiler::Compiler:I/O:STDOUT:ITM:1.2.0
       Source file:   Source/retarget_io.c
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

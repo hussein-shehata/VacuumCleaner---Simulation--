@@ -4,6 +4,8 @@
 #include "../Modules/Display.h"
 #include "../Modules/Led.h"
 #include "stm32f4xx_ll_tim.h"
+#include "../Modules/VC.h"
+#include "../Modules/Motor.h"
 
 
 LL_TIM_InitTypeDef TIM2_Config = {0, LL_TIM_COUNTERMODE_UP, 0, LL_TIM_CLOCKDIVISION_DIV1, 0};
@@ -75,7 +77,7 @@ void SysTick_Handler(void)
    	SW_Update();
 	/* sandwiching VC_Update*/
 	TMR5_SetCounter(10);
-    TMR5_Start()
+    TMR5_Start();
 	VC_Update();
 	while(!(TIM5->SR&(1<<0))>>0);
     TIM5->SR &= ~(1<<0);
@@ -84,15 +86,15 @@ void SysTick_Handler(void)
 
 	/* sandwiching Motor_Update*/
 	TMR5_SetCounter(10);
-    TMR5_Start()
+    TMR5_Start();
   	Motor_Update();
 	while(!(TIM5->SR&(1<<0))>>0);
     TIM5->SR &= ~(1<<0);
     TMR5_Stop();
 
 	TMR5_SetCounter(10);
-    TMR5_Start()
-  	Disp_Update();
+    TMR5_Start();;
+  	DISP_Update();
 	while(!(TIM5->SR&(1<<0))>>0);
     TIM5->SR &= ~(1<<0);
     TMR5_Stop();

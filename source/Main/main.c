@@ -15,7 +15,7 @@ int main(void)
     /* Initialization */
    
    printf("Vacuum Cleaner is starting ...\n");
-   
+
     SW_Init();
     DISP_Init();
     VC_Init();
@@ -26,9 +26,11 @@ int main(void)
     TMR_Start();
 		
 		TMR2_Init();
-		TMR2_SetCounter(90);
-		TMR2_Start();
+		// TMR2_SetCounter(90);
+		// TMR2_Start();
 	
+		TMR5_Init();
+		
     while (1)
     {
       // Sleep
